@@ -1,3 +1,24 @@
-# WebApp-Dev-Project
+# 340project
 
-For this project, I intend to make a discussion forum. The primary features will include the ability to create and edit posts, along with the ability to add a comment on each existing post. More features such as like/dislike counter for each post and others may be added if time allows.
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
