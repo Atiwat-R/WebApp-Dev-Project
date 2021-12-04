@@ -4,7 +4,7 @@ import "nprogress/nprogress.css";
 import { createRouter, createWebHistory } from "vue-router";
 
 import PostPanel from "./components/PostPanel.vue";
-
+import PostMaker from "./components/PostMaker.vue";
 
 
 const router = createRouter({
@@ -12,12 +12,13 @@ const router = createRouter({
     routes: [
       { path: "/", redirect: "/postpanel" },
       { path: "/postpanel", component: PostPanel },
+      { path: "/postmaker", component: PostMaker },
     ],
   });
 
 
 
-createApp(App).use(router).mount("#app");
+createApp(App).use(router).mount('#app');
 
 
 

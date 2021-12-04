@@ -1,14 +1,17 @@
 <template>
-    This is Post Panel
-    
-    <div>
+
+    <div class="post-panel">
+        <h2>This is Post Panel</h2>
         <post
         v-for="aPost in allPosts"
         :key="aPost.title"
         :title="aPost.title"
-        :content="aPost.content">
+        :poster="aPost.poster"
+        :content="aPost.content"
+        :postID="aPost.postID">
         </post>
     </div>
+
 
 </template>
 
@@ -28,7 +31,9 @@ export default {
 
 
 <style scoped>
-
+    .post-panel {
+        background: orange;
+    }
 </style>
 
 
