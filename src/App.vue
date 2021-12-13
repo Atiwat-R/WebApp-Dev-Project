@@ -1,12 +1,33 @@
 <template>
 
-  <h1>Discussion Forum</h1>
+  <body>
+    
+    <h1 id="title"> Joshbell City Forum </h1>
 
-  <!-- Navigation Panel -->
-  <router-link to="/postpanel"> Home </router-link>
-  <router-link to="/postmaker"> Create Post </router-link>
+    <!-- Navigation Panel. Won't appear in /login or /register -->
+    <div class="navbar" v-show="$route.path==='/login' || $route.path==='/register' ? false : true">
 
-  <router-view></router-view>
+      <p>Welcome, <span id="colorText1"> {{ this.getUserName() }} </span> </p>
+
+      <router-link to="/postpanel"> Home </router-link>
+      <router-link to="/postmaker"> Create Post </router-link>
+      <router-link to="/commentpanel"> Comments </router-link>
+      <router-link to="/userprofile"> Profile </router-link>
+
+      <button id="logoutButton" @click="logout">Logout</button>
+
+    </div>
+
+    <!-- Display components -->
+    <router-view></router-view>
+
+    <p id="siteNote">
+      <br>
+      Created and Owned by Atiwat Rachatawarn
+      <br><br><br>
+    </p>
+
+  </body>
 
 
 
@@ -15,44 +36,91 @@
 
 <script>
 
-
+import { onBeforeMount } from "vue";
+import { useRouter, useRoute } from "vue-router";
+import { getAuth } from "firebase/auth";
 
 export default {
 
-  provide: { // Provide pass down data to all its child
-    allPosts: // a list containing all the posts.
-    [
-      {
-        title: "My First Post",
-        poster: "Admin1",
-        content: "Hello friend! \nThis is the first post. Happy discussion!",
-        postID: "80b988e6-5354-4d8b-8a3a-5f9a6ec96aaa"
-      },
-      {
-        title: "Where can I find great tonkatsu restaurant?",
-        poster: "Hades Jordann",
-        content: "I currently live in Terra Festa and is searching for a place with good tonkatsu. \nAny recommendations are appreciated.",
-        postID: "d78a0cb4-edb5-4582-a715-8b04c817a53e"
-      },
-    ]
+  // Firebase auth roughly followed from https://www.youtube.com/watch?v=FMPHvxqDrVk
+  // NOTE: The video use firebase Web version 8; I use Web version 9
+  // Doc: https://firebase.google.com/docs/reference/js/auth?hl=en
+  setup() {
+    const router = useRouter();
+    const route = useRoute();
+
+    onBeforeMount( function () {
+      getAuth().onAuthStateChanged(function (user) {
+        if (!user) {
+          router.replace("/login") // If there's no user, move back to Login page
+        }
+        else {
+          // If there's user and we're in login/register page, move to home page
+          if (route.path == "/login" || route.path == "/register") router.replace("/")
+        }
+      })
+    })
+    
+
   },
+
+
+
+  methods: {
+
+    // Logout
+    logout() {
+      getAuth()
+      .signOut()
+      .then(() => console.log("Signed Out"))
+      .catch((error) => console.log(error.message))
+    },
+
+    getUserName() {
+
+      if (getAuth().currentUser != null) {
+        // return getAuth().currentUser.email.split('@')[0]
+        return getAuth().currentUser.displayName
+      }
+      else return ""
+
+    }
+
+  },
+
+
+
 }
 </script>
 
+
+
+
+
 <style>
 
+/* Set entire web's background to black */
+body {
+  background-color: #121212;
+}
+/* Entire app */
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Lucida Console", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #bad2e9;
   margin-top: 60px;
+}
+#colorText1 {
+  color: #bb64dd
 }
 
 
-a {
-  background-color: #008cba; /* Green */
+/* Links design (router links too) */
+a, #logoutButton {
+  font-family: "Lucida Console";
+  background-color: #121212; 
   border: none;
   color: white;
   padding: 15px 32px;
@@ -61,7 +129,21 @@ a {
   display: inline-block;
   font-size: 16px;
 }
-a.router-link-active {
-  background-color: #4caf50;
+#logoutButton {
+  background-color: #6f009b; 
 }
+
+/* Change color while hovering */
+a:hover, a.router-link-active {
+  background-color: #414141;
+}
+#logoutButton:hover {
+  background-color: #bb64dd;
+}
+
+#siteNote {
+  font-size: 12px;
+}
+
+
 </style>

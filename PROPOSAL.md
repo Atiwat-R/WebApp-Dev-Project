@@ -8,14 +8,25 @@ For this project, I intend to make a discussion forum. The primary features will
 
 ## Key features
 
-- Login system for each user.
-- Users can create and edit posts.
-- Each post have title and text, and username of the poster.
-- Poster and other users can leave comments under each post.
-- Each comment contains username and text. 
-- Routing to different pages for each discussion topics (one page for video games, another for movies, etc. There will be fixed number of pages.)
+- Authentication system for each user
+    - Login and Register
+    - Email and Password authentication
+    - Unable to access other pages before login
+    - Once logged in, cannot access Login & Register page until Logout
+- Users can create posts
+    - Each post have title and text, and username of the poster
+    - Poster and other users can leave comments under each post
+    - Clicking a post redirects them to comments under each post
+- Users can comment on any posts
+    - Each comment contains username and text
+- Routing to different pages for each functionality
+    - Home page, aka Post Panel that display all Posts
+    - Create Post, allows user to create post
+    - Comments, clicking on Posts brings them here where they can Comment
+    - Profile, shows user info. Can change display name here
 
 ## Optional features
 
 - Like/Dislike button and counter for each post
+- Timestamp on Post and Comments
 - Better site decoration

@@ -24,7 +24,7 @@ export default {
   
   // API for posts
   postPost(theObj) {
-    return apiClient.post("/allPost.json", theObj);
+    return apiClient.post("/allPost.json", theObj); // ?auth=333
   },
   getPost() {
     return apiClient.get("/allPost.json");
