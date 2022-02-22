@@ -39,8 +39,6 @@ Dependency used:
 
 - Display name and page loading might be buggy at page reloads. Just login again and all problems should be fixed. 
 
-## What features that you cannot complete (explain why so)
-
 ## What features shall be added (if you would have more time)
 
 - Like & Dislike counter
