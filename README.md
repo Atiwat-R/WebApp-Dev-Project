@@ -39,7 +39,7 @@ Dependency used:
 
 - Display name and page loading might be buggy at page reloads. Just login again and all problems should be fixed. 
 
-## What features shall be added (if you would have more time)
+## What features may be added.
 
 - Like & Dislike counter
 - Better site decoration
