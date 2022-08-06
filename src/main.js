@@ -36,13 +36,13 @@ import { browserLocalPersistence, getAuth, setPersistence } from "firebase/auth"
 
 // Your web app's Firebase configuration. This is from the Firebase website
 const firebaseConfig = {
-  apiKey: "AIzaSyDED1dA2VLWkowT7U_j_cMRfa1PQsmIA0c",
-  authDomain: "webapp-discussion-forum.firebaseapp.com",
-  databaseURL: "https://webapp-discussion-forum-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "webapp-discussion-forum",
-  storageBucket: "webapp-discussion-forum.appspot.com",
-  messagingSenderId: "585429205844",
-  appId: "1:585429205844:web:3bde58a1646e6cf257bec1"
+  apiKey: "AIzaSyB_9Dd_j-R57DiVILOfWKjRAiifiYuwY3s",
+  authDomain: "webapp-forum-v2.firebaseapp.com",
+  databaseURL: "https://webapp-forum-v2-default-rtdb.asia-southeast1.firebasedatabase.app/",
+  projectId: "webapp-forum-v2",
+  storageBucket: "webapp-forum-v2.appspot.com",
+  messagingSenderId: "774468698770",
+  appId: "1:774468698770:web:8737ab841c0da87ff05c4b"
 };
 
 // Initialize Firebase
@@ -124,17 +124,9 @@ createApp(App).use(store).use(router).mount('#app');
 
 /* Some accounts
 
-Jim Avis
-jimavis@email.osd
-siege2233
-
-Tor Binadez
-torbin@email.com
-torbinxproteinz
-
-Babel
-babel@xmail.oar
-thefullmoonrises
+Admin0
+admin@gmail.com
+lettherebelight
 
 */
 
