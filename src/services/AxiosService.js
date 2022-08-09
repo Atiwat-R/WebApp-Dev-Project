@@ -23,7 +23,8 @@ apiClient.interceptors.response.use((response) => {
 export default {
   
   // API for posts
-  postPost(theObj) {
+  // Posts will be kept in a single place, allPost
+  postPost(theObj) { 
     return apiClient.post("/allPost.json", theObj); // ?auth=333
   },
   getPost() {
@@ -31,10 +32,13 @@ export default {
   },
 
   // API for comments
+  // Each comment will be kept in a node named after a postID of the post it is commented under
   postComment(theObj) {
-    return apiClient.post("/allComment.json", theObj);
+    let nodeName = "/" + theObj.postID + ".json"; // Ex. /1234.json 
+    return apiClient.post(nodeName, theObj);
   },
-  getComment() {
-    return apiClient.get("/allComment.json");
+  getComment(postID) {
+    let nodeName = "/" + postID + ".json";
+    return apiClient.get(nodeName);
   },
 };

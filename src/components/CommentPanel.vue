@@ -90,12 +90,12 @@ export default {
     methods: {
         // Get all comments with same ID as postID from Firebase
         getAllRelevantComments() {
-            AxiosService.getComment()
+            AxiosService.getComment(this.postID)
             .then((response) => {
                 const data = response.data;
                 const localArr = []
                 for (const i in data) {
-                    if (data[i].postID != this.postID) continue // Skip this comment if its not the comment under this post
+                    // if (data[i].postID != this.postID) continue // Skip this comment if its not the comment under this post
                     const aComment = {}
                     aComment.commentor = data[i].commentor
                     aComment.content = data[i].content
