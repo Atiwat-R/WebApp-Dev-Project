@@ -95,7 +95,6 @@ export default {
                 const data = response.data;
                 const localArr = []
                 for (const i in data) {
-                    // if (data[i].postID != this.postID) continue // Skip this comment if its not the comment under this post
                     const aComment = {}
                     aComment.commentor = data[i].commentor
                     aComment.content = data[i].content

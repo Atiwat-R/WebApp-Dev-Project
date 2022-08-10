@@ -11,8 +11,15 @@
             </p>
             <p>
                 <label for="password"></label>
-                <input id="password" v-model="password" placeholder="Password" />
+                <input id="password" v-model="password" type="password" placeholder="Password" />
             </p>
+
+            <!-- Password visibility button -->
+            <p>
+                <input id="showPassword" onclick="showPassword()" type="checkbox">Show Password 
+            </p>
+
+            <!-- Login -->
             <button id="loginButton">Login</button>      
         </form>
 
@@ -53,7 +60,18 @@ export default {
                     console.log(error.message);
                     alert(error.message)
                 });
-        }
+        },
+
+        showPassword() {
+            var passwordInput = document.getElementById("password");
+
+            if (passwordInput.type == "password") {
+                passwordInput.type = "text";
+            }
+            else {
+                passwordInput.type = "password";
+            } 
+        },
     }
 
 }
@@ -85,6 +103,14 @@ export default {
     }
     #loginButton:hover {
         background-color: #bb64dd;
+    }
+
+    /* Show password button */
+    #showPassword {
+        color: white;
+        background-color: #414141;
+        font-family: "Lucida Console";
+        color: rgb(161, 161, 161);
     }
 
 </style>
