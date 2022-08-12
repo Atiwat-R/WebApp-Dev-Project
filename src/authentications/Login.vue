@@ -6,22 +6,26 @@
         <form @submit.prevent="loginUser">
             <!-- Put in Login info -->
             <p>
+                <!-- Email -->
                 <label for="email"></label>
                 <input id="email" v-model="email" placeholder="Email" />
             </p>
             <p>
+                <!-- Password -->
+                <!-- v-if/v-else is for hiding password -->
                 <label for="password"></label>
-                <input id="password" v-model="password" type="password" placeholder="Password" />
-            </p>
-
-            <!-- Password visibility button -->
-            <p>
-                <input id="showPassword" onclick="showPassword()" type="checkbox">Show Password 
+                <input v-if="passwordHidden" type="password" id="password" v-model="password" placeholder="Password" />
+                <input v-else type="text" id="password" v-model="password" placeholder="Password" />
             </p>
 
             <!-- Login -->
             <button id="loginButton">Login</button>      
         </form>
+
+        <!-- Toggle password visibility button -->
+        <p>
+            <input id="showPassword" @click="showPassword()" type="checkbox">Show Password 
+        </p>
 
         <!-- Go to Register -->
         <p>
@@ -44,6 +48,7 @@ export default {
         return {
             email: "",
             password: "",
+            passwordHidden: true,
         };
     },
 
@@ -62,15 +67,9 @@ export default {
                 });
         },
 
+        // Change visibility of password input
         showPassword() {
-            var passwordInput = document.getElementById("password");
-
-            if (passwordInput.type == "password") {
-                passwordInput.type = "text";
-            }
-            else {
-                passwordInput.type = "password";
-            } 
+            this.passwordHidden = !this.passwordHidden
         },
     }
 
