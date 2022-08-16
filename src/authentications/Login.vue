@@ -18,14 +18,23 @@
                 <input v-else type="text" id="password" v-model="password" placeholder="Password" />
             </p>
 
+            <p>
+                <!-- Toggle password visibility button -->
+                <img v-if="passwordHidden" src="../assets/image/icon_visibility_off.png" @click="showPassword()" />
+                <img v-else src="../assets/image/icon_visibility_on.png" @click="showPassword()" />
+            </p>
+
             <!-- Login -->
             <button id="loginButton">Login</button>      
         </form>
 
+        
+
         <!-- Toggle password visibility button -->
-        <p>
-            <input id="showPassword" @click="showPassword()" type="checkbox">Show Password 
-        </p>
+        <!-- <p>
+            <img v-if="passwordHidden" src="../assets/image/icon_visibility_off.png" @click="showPassword()" />
+            <img v-else src="../assets/image/icon_visibility_on.png" @click="showPassword()" />
+        </p> -->
 
         <!-- Go to Register -->
         <p>
