@@ -7,3 +7,6 @@ docker run -it --rm -p 8080:8080 webapp-forum
 # Working rn:
 # docker build -t webapp-forum .
 # 
+# Run locally with nodejs:
+# npm install
+# npm run serve
